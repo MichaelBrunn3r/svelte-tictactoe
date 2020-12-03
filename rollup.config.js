@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import replace from '@rollup/plugin-replace';
+import ghPages from 'gh-pages';
 
 const production = !process.env.ROLLUP_WATCH;
 const apiUrl = production ? "https://tictactoe.noahglaser.net" : 'http://localhost:4001'
@@ -78,7 +79,9 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser() && ghPages.publish('public', (err) => {
+			console.log('Deployed to Github Pages', err);
+		})
 	],
 	watch: {
 		clearScreen: false
