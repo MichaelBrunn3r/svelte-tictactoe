@@ -1,4 +1,4 @@
-# Svelte Tictactoe
+# Svelte Tic Tac Toe
 
 A multiplayer TicTacToe App. Follow the amazing [tutorial](https://youtu.be/ujbE0mzX-CU) by Noah.
 <br>
