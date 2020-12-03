@@ -1,30 +1,54 @@
 <script>
-	export let name;
-</script>
+	import Square from './Square.svelte';
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+	let numOtherPlayers = 0;
+	let currentPlayer = "X";
+</script>
 
 <style>
 	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
+		width: 475px;
 		margin: 0 auto;
+		height: 1000px;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
+	.row {
+		display: flex;
 	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	button {
+		width: 100%;
+		margin-top: 20px;
+		border-radius: 0;
+		font-size: 30px;
+		cursor: pointer;
+	}
+
+	button:hover {
+		outline: none;
 	}
 </style>
+
+<main>
+	<h1>Tic Tac Toe</h1>
+	<h2>Number of other people playing: {numOtherPlayers}</h2>
+	<h2>Player {currentPlayer}</h2>
+
+	<div class="row">
+		<Square state={"O"}/>
+		<Square state={"O"}/>
+		<Square state={"O"}/>
+	</div>
+	<div class="row">
+		<Square state={"O"}/>
+		<Square state={"O"}/>
+		<Square state={"O"}/>
+	</div>
+	<div class="row">
+		<Square state={"O"}/>
+		<Square state={"O"}/>
+		<Square state={"O"}/>
+	</div>
+
+	<button>New Game</button>
+</main>
