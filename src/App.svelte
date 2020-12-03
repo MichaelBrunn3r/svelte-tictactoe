@@ -1,11 +1,13 @@
 <script>
 	import Square from './Square.svelte';
 	import gameStore from './game-store.js';
+	import requests from './requests.js';
 
 	let numPlayers = 0;
 	let currentPlayer = "X";
 	let board = ["", "", "", "", "", "", "", "", ""];
 	let winner;
+	let errorMsg;
 
 	gameStore.subscribe(data => {
 		if(!data) {
@@ -16,7 +18,12 @@
 		currentPlayer = data.nextPlayer;
 		board = data.board;
 		numPlayers = data.numberOfPeeps;
-	})
+	});
+
+	async function takeSquare(square_id) {
+		if(winner || !gameStore.isConnected) return;
+		errorMsg = await requests.nextMove(square_id);
+	}
 </script>
 
 <style>
@@ -41,6 +48,11 @@
 	button:hover {
 		outline: none;
 	}
+
+	.errorMessage {
+		color: red;
+		font-size: 20px;
+	}
 </style>
 
 <main>
@@ -56,22 +68,26 @@
 	{/if}
 
 	<div class="row">
-		<Square state={board[0]}/>
-		<Square state={board[1]}/>
-		<Square state={board[2]}/>
+		<Square {winner} state={board[0]} on:click={() => takeSquare(0)}/>
+		<Square {winner} state={board[1]} on:click={() => takeSquare(1)}/>
+		<Square {winner} state={board[2]} on:click={() => takeSquare(2)}/>
 	</div>
 	<div class="row">
-		<Square state={board[3]}/>
-		<Square state={board[4]}/>
-		<Square state={board[5]}/>
+		<Square {winner} state={board[3]} on:click={() => takeSquare(3)}/>
+		<Square {winner} state={board[4]} on:click={() => takeSquare(4)}/>
+		<Square {winner} state={board[5]} on:click={() => takeSquare(5)}/>
 	</div>
 	<div class="row">
-		<Square state={board[6]}/>
-		<Square state={board[7]}/>
-		<Square state={board[8]}/>
+		<Square {winner} state={board[6]} on:click={() => takeSquare(6)}/>
+		<Square {winner} state={board[7]} on:click={() => takeSquare(7)}/>
+		<Square {winner} state={board[8]} on:click={() => takeSquare(8)}/>
 	</div>
 
 	{#if winner}
 		<button>New Game</button>
+	{/if}
+
+	{#if errorMsg}
+		<p class="errorMessage">{errorMsg}</p>
 	{/if}
 </main>

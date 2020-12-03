@@ -1,5 +1,8 @@
 <script>
 	export let state;
+	export let winner;
+
+	$: isWinnerSquare = winner && winner === state;
 </script>
 
 <style>
@@ -12,6 +15,11 @@
 		line-height: 125px;
 		cursor: pointer;
 	}
+
+	.winner-square {
+		color: blue;
+		font-size: 20px;
+	}
 </style>
 
-<div class="square">{state}</div>
+<div on:click class="square" class:winner-square={isWinnerSquare}>{state}</div>
