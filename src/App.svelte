@@ -35,19 +35,19 @@
 	<h2>Player {currentPlayer}</h2>
 
 	<div class="row">
-		<Square state={"O"}/>
-		<Square state={"O"}/>
-		<Square state={"O"}/>
+		<Square/>
+		<Square/>
+		<Square/>
 	</div>
 	<div class="row">
-		<Square state={"O"}/>
-		<Square state={"O"}/>
-		<Square state={"O"}/>
+		<Square/>
+		<Square/>
+		<Square/>
 	</div>
 	<div class="row">
-		<Square state={"O"}/>
-		<Square state={"O"}/>
-		<Square state={"O"}/>
+		<Square/>
+		<Square/>
+		<Square/>
 	</div>
 
 	<button>New Game</button>

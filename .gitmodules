@@ -1,0 +1,3 @@
+[submodule "tictactoe-server"]
+	path = tictactoe-server
+	url = https://github.com/phptuts/tictactoe-server.git
