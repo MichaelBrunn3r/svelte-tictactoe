@@ -24,6 +24,10 @@
 		if(winner || !gameStore.isConnected) return;
 		errorMsg = await requests.nextMove(square_id);
 	}
+
+	async function newGame() {
+		requests.newGame();
+	}
 </script>
 
 <style>
@@ -84,7 +88,7 @@
 	</div>
 
 	{#if winner}
-		<button>New Game</button>
+		<button on:click={newGame}>New Game</button>
 	{/if}
 
 	{#if errorMsg}

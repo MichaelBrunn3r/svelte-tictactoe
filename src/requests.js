@@ -10,6 +10,16 @@ const nextMove = async (square_id) => {
 	}
 }
 
+const newGame = async () => {
+	try {
+		await fetch(`${process.env.apiUrl}/reset`);
+	} catch (e) {
+		console.log(e);
+		return 'Error connecting to the server';
+	}
+}
+
 export default {
-	nextMove
+	nextMove,
+	newGame
 }

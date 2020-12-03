@@ -14,11 +14,12 @@
 		text-align: center;
 		line-height: 125px;
 		cursor: pointer;
+		font-size: 60px;
 	}
 
 	.winner-square {
 		color: blue;
-		font-size: 20px;
+		font-size: 100px;
 	}
 </style>
 
